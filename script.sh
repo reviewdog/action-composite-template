@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-if [ -n "${GITHUB_WORKSPACE}" ] ; then
+if [ -n "${GITHUB_WORKSPACE}" ]; then
   cd "${GITHUB_WORKSPACE}/${INPUT_WORKDIR}" || exit
 fi
 
@@ -15,14 +15,14 @@ echo '::endgroup::'
 
 echo '::group:: Running misspell with reviewdog 🐶 ...'
 # shellcheck disable=SC2086
-misspell -locale="${INPUT_LOCALE}" . \
-  | reviewdog -efm="%f:%l:%c: %m" \
-      -name="linter-name (misspell)" \
-      -reporter="${INPUT_REPORTER}" \
-      -filter-mode="${INPUT_FILTER_MODE}" \
-      -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
-      -level="${INPUT_LEVEL}" \
-      ${INPUT_REVIEWDOG_FLAGS}
+misspell -locale="${INPUT_LOCALE}" . |
+  reviewdog -efm="%f:%l:%c: %m" \
+    -name="linter-name (misspell)" \
+    -reporter="${INPUT_REPORTER}" \
+    -filter-mode="${INPUT_FILTER_MODE}" \
+    -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
+    -level="${INPUT_LEVEL}" \
+    ${INPUT_REVIEWDOG_FLAGS}
 exit_code=$?
 echo '::endgroup::'
 exit $exit_code
