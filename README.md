@@ -39,8 +39,8 @@ inputs:
     description: 'Report level for reviewdog [info,warning,error]'
     default: 'error'
   reporter:
-    description: 'Reporter of reviewdog command [github-pr-check,github-check,github-pr-review].'
-    default: 'github-pr-check'
+    description: 'Reporter of reviewdog command [github-check,github-pr-review,github-pr-check].'
+    default: 'github-check'
   filter_mode:
     description: |
       Filtering mode for the reviewdog command [added,diff_context,file,nofilter].
@@ -76,7 +76,7 @@ jobs:
       - uses: reviewdog/action-composite-template@v1
         with:
           github_token: ${{ secrets.github_token }}
-          # Change reviewdog reporter if you need [github-pr-check,github-check,github-pr-review].
+          # Change reviewdog reporter if you need [github-check,github-pr-review,github-pr-check].
           reporter: github-pr-review
           # Change reporter level if you need.
           # GitHub Status Check won't become failure with warning.
