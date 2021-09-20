@@ -38,9 +38,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: ./
+        continue-on-error: true
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
           level: error
           locale: "US"
           reviewdog_flags: -filter-mode=file -fail-on-error
+      - name: check the exit code
+        if: ${{ !success() }}
+        run: echo 'The previous step should fail' && exit 1
