@@ -14,6 +14,7 @@ wget -O - -q https://git.io/misspell | sh -s -- -b "${TEMP_PATH}"
 echo '::endgroup::'
 
 echo '::group:: Running misspell with reviewdog 🐶 ...'
+# shellcheck disable=SC2086
 misspell -locale="${INPUT_LOCALE}" . \
   | reviewdog -efm="%f:%l:%c: %m" \
       -name="linter-name (misspell)" \
