@@ -76,7 +76,7 @@ jobs:
     name: runner / <linter-name>
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: reviewdog/action-composite-template@v1
         with:
           github_token: ${{ secrets.github_token }}
