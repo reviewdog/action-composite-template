@@ -45,7 +45,8 @@ jobs:
           reporter: github-pr-review
           level: error
           locale: "US"
-          reviewdog_flags: -filter-mode=file -fail-on-error
+          filter_mode: file
+          fail_on_error: true
       - name: check the exit code
         if: ${{ !success() }}
         run: echo 'The previous step should fail' && exit 1
