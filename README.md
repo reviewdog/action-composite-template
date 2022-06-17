@@ -35,6 +35,9 @@ inputs:
     description: 'Working directory relative to the root directory.'
     default: '.'
   ### Flags for reviewdog ###
+  tool_name:
+    description: 'Tool name to use for reviewdog reporter'
+    default: '<linter-name>'
   level:
     description: 'Report level for reviewdog [info,warning,error]'
     default: 'error'
