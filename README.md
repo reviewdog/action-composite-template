@@ -102,16 +102,20 @@ ref: https://help.github.com/en/articles/about-actions#versioning-your-action
 
 ### Lint - reviewdog integration
 
-This reviewdog action template itself is integrated with reviewdog to run lints
-which is useful for Docker container based actions.
+This reviewdog action itself is integrated with reviewdog to run lints
+which is useful for [action composition] based actions.
+
+[action composition]:https://docs.github.com/en/actions/creating-actions/creating-a-composite-action
 
 ![reviewdog integration](https://user-images.githubusercontent.com/3797062/72735107-7fbb9600-3bde-11ea-8087-12af76e7ee6f.png)
 
 Supported linters:
 
 - [reviewdog/action-shellcheck](https://github.com/reviewdog/action-shellcheck)
-- [reviewdog/action-hadolint](https://github.com/reviewdog/action-hadolint)
+- [reviewdog/action-shfmt](https://github.com/reviewdog/action-shfmt)
+- [reviewdog/action-actionlint](https://github.com/reviewdog/action-actionlint)
 - [reviewdog/action-misspell](https://github.com/reviewdog/action-misspell)
+- [reviewdog/action-alex](https://github.com/reviewdog/action-alex)
 
 ### Dependencies Update Automation
 This repository uses [reviewdog/action-depup](https://github.com/reviewdog/action-depup) to update
