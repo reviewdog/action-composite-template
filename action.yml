@@ -1,6 +1,7 @@
-name: 'TODO: Run <linter-name> with reviewdog'
-description: 'TODO: 🐶 Run <linter-name> with reviewdog on pull requests to improve code review experience.'
-author: 'TODO: <your-name>'
+# TODO: replace `<linter-name>` and `<your-name>` with yours
+name: 'Run <linter-name> with reviewdog'
+description: '🐶 Run <linter-name> with reviewdog on pull requests to improve code review experience.'
+author: '<your-name>'
 inputs:
   github_token:
     description: 'GITHUB_TOKEN'

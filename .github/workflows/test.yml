@@ -4,6 +4,7 @@ on:
     branches:
       - main
   pull_request:
+# TODO: replace `<linter-name>` with yours
 jobs:
   test-check:
     name: runner / <linter-name> (github-check)

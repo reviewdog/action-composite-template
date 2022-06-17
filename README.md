@@ -11,6 +11,7 @@
 ![github-pr-review demo](https://user-images.githubusercontent.com/3797062/73162963-4b8e2b00-4132-11ea-9a3f-f9c6f624c79f.png)
 ![github-pr-check demo](https://user-images.githubusercontent.com/3797062/73163032-70829e00-4132-11ea-8481-f213a37db354.png)
 
+<!-- TODO: outline your action here -->
 This is a template repository for
 [reviewdog](https://github.com/reviewdog/reviewdog) action with release
 automation based on [action composition](https://docs.github.com/en/actions/creating-actions/creating-a-composite-action).
@@ -25,7 +26,7 @@ This repo contains a sample action to run [misspell](https://github.com/client9/
 
 ## Input
 
-<!-- TODO: update -->
+<!-- TODO: replace `<linter-name>` with yours -->
 ```yaml
 inputs:
   github_token:
@@ -64,13 +65,13 @@ inputs:
 ```
 
 ## Usage
-<!-- TODO: update. replace `template` with the linter name -->
+<!-- TODO: replace reviewdog/action-composite-template with your repo name -->
 
 ```yaml
 name: reviewdog
 on: [pull_request]
 jobs:
-  # TODO: change `linter_name`.
+  # TODO: replace `linter_name` and `<linter-name>` with yours
   linter_name:
     name: runner / <linter-name>
     runs-on: ubuntu-latest
