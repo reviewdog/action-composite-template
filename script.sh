@@ -17,7 +17,7 @@ echo '::group:: Running misspell with reviewdog 🐶 ...'
 # shellcheck disable=SC2086
 misspell -locale="${INPUT_LOCALE}" . |
   reviewdog -efm="%f:%l:%c: %m" \
-    -name="linter-name (misspell)" \
+    -name="${INPUT_TOOL_NAME}" \
     -reporter="${INPUT_REPORTER}" \
     -filter-mode="${INPUT_FILTER_MODE}" \
     -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
