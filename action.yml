@@ -10,10 +10,10 @@ inputs:
     default: '.'
   ### Flags for reviewdog ###
   tool_name:
-    description: 'Tool name to use for reviewdog reporter'
+    description: 'Tool name to use for reviewdog reporter.'
     default: '<linter-name>'
   level:
-    description: 'Report level for reviewdog [info,warning,error]'
+    description: 'Report level for reviewdog [info,warning,error].'
     default: 'error'
   reporter:
     description: 'Reporter of reviewdog command [github-check,github-pr-review].'
@@ -25,11 +25,11 @@ inputs:
     default: 'added'
   fail_on_error:
     description: |
-      Exit code for reviewdog when errors are found [true,false]
+      Exit code for reviewdog when errors are found [true,false].
       Default is `false`.
     default: 'false'
   reviewdog_flags:
-    description: 'Additional reviewdog flags'
+    description: 'Additional reviewdog flags.'
     default: ''
   ### Flags for <linter-name> ###
   locale:
