@@ -1,6 +1,7 @@
-name: 'TODO: Run <linter-name> with reviewdog'
-description: 'TODO: 🐶 Run <linter-name> with reviewdog on pull requests to improve code review experience.'
-author: 'TODO: <your-name>'
+# TODO: replace `<linter-name>` and `<your-name>` with yours
+name: 'Run <linter-name> with reviewdog'
+description: '🐶 Run <linter-name> with reviewdog on pull requests to improve code review experience.'
+author: '<your-name>'
 inputs:
   github_token:
     description: 'GITHUB_TOKEN'
@@ -10,13 +11,13 @@ inputs:
     default: '.'
   ### Flags for reviewdog ###
   tool_name:
-    description: 'Tool name to use for reviewdog reporter'
+    description: 'Tool name to use for reviewdog reporter.'
     default: '<linter-name>'
   level:
-    description: 'Report level for reviewdog [info,warning,error]'
+    description: 'Report level for reviewdog [info,warning,error].'
     default: 'error'
   reporter:
-    description: 'Reporter of reviewdog command [github-check,github-pr-review].'
+    description: 'Reporter of reviewdog command [github-check,github-pr-review,github-pr-check].'
     default: 'github-check'
   filter_mode:
     description: |
@@ -25,11 +26,11 @@ inputs:
     default: 'added'
   fail_on_error:
     description: |
-      Exit code for reviewdog when errors are found [true,false]
+      Exit code for reviewdog when errors are found [true,false].
       Default is `false`.
     default: 'false'
   reviewdog_flags:
-    description: 'Additional reviewdog flags'
+    description: 'Additional reviewdog flags.'
     default: ''
   ### Flags for <linter-name> ###
   locale:
@@ -47,13 +48,13 @@ runs:
         # INPUT_<VARIABLE_NAME> is not available in Composite run steps
         # https://github.community/t/input-variable-name-is-not-available-in-composite-run-steps/127611
         INPUT_GITHUB_TOKEN: ${{ inputs.github_token }}
+        INPUT_WORKDIR: ${{ inputs.workdir }}
         INPUT_TOOL_NAME: ${{ inputs.tool_name }}
         INPUT_LEVEL: ${{ inputs.level }}
         INPUT_REPORTER: ${{ inputs.reporter }}
         INPUT_FILTER_MODE: ${{ inputs.filter_mode }}
         INPUT_FAIL_ON_ERROR: ${{ inputs.fail_on_error }}
         INPUT_REVIEWDOG_FLAGS: ${{ inputs.reviewdog_flags }}
-        INPUT_WORKDIR: ${{ inputs.workdir }}
         INPUT_LOCALE: ${{ inputs.locale }}
 
 # Ref: https://haya14busa.github.io/github-action-brandings/

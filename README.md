@@ -11,6 +11,7 @@
 ![github-pr-review demo](https://user-images.githubusercontent.com/3797062/73162963-4b8e2b00-4132-11ea-9a3f-f9c6f624c79f.png)
 ![github-pr-check demo](https://user-images.githubusercontent.com/3797062/73163032-70829e00-4132-11ea-8481-f213a37db354.png)
 
+<!-- TODO: outline your action here -->
 This is a template repository for
 [reviewdog](https://github.com/reviewdog/reviewdog) action with release
 automation based on [action composition](https://docs.github.com/en/actions/creating-actions/creating-a-composite-action).
@@ -25,7 +26,7 @@ This repo contains a sample action to run [misspell](https://github.com/client9/
 
 ## Input
 
-<!-- TODO: update -->
+<!-- TODO: replace `<linter-name>` with yours -->
 ```yaml
 inputs:
   github_token:
@@ -35,8 +36,11 @@ inputs:
     description: 'Working directory relative to the root directory.'
     default: '.'
   ### Flags for reviewdog ###
+  tool_name:
+    description: 'Tool name to use for reviewdog reporter.'
+    default: '<linter-name>'
   level:
-    description: 'Report level for reviewdog [info,warning,error]'
+    description: 'Report level for reviewdog [info,warning,error].'
     default: 'error'
   reporter:
     description: 'Reporter of reviewdog command [github-check,github-pr-review,github-pr-check].'
@@ -48,11 +52,11 @@ inputs:
     default: 'added'
   fail_on_error:
     description: |
-      Exit code for reviewdog when errors are found [true,false]
+      Exit code for reviewdog when errors are found [true,false].
       Default is `false`.
     default: 'false'
   reviewdog_flags:
-    description: 'Additional reviewdog flags'
+    description: 'Additional reviewdog flags.'
     default: ''
   ### Flags for <linter-name> ###
   locale:
@@ -61,18 +65,18 @@ inputs:
 ```
 
 ## Usage
-<!-- TODO: update. replace `template` with the linter name -->
+<!-- TODO: replace reviewdog/action-composite-template with your repo name -->
 
 ```yaml
 name: reviewdog
 on: [pull_request]
 jobs:
-  # TODO: change `linter_name`.
+  # TODO: replace `linter_name` and `<linter-name>` with yours
   linter_name:
     name: runner / <linter-name>
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: reviewdog/action-composite-template@v1
         with:
           github_token: ${{ secrets.github_token }}
@@ -98,16 +102,20 @@ ref: https://help.github.com/en/articles/about-actions#versioning-your-action
 
 ### Lint - reviewdog integration
 
-This reviewdog action template itself is integrated with reviewdog to run lints
-which is useful for Docker container based actions.
+This reviewdog action itself is integrated with reviewdog to run lints
+which is useful for [action composition] based actions.
+
+[action composition]:https://docs.github.com/en/actions/creating-actions/creating-a-composite-action
 
 ![reviewdog integration](https://user-images.githubusercontent.com/3797062/72735107-7fbb9600-3bde-11ea-8087-12af76e7ee6f.png)
 
 Supported linters:
 
 - [reviewdog/action-shellcheck](https://github.com/reviewdog/action-shellcheck)
-- [reviewdog/action-hadolint](https://github.com/reviewdog/action-hadolint)
+- [reviewdog/action-shfmt](https://github.com/reviewdog/action-shfmt)
+- [reviewdog/action-actionlint](https://github.com/reviewdog/action-actionlint)
 - [reviewdog/action-misspell](https://github.com/reviewdog/action-misspell)
+- [reviewdog/action-alex](https://github.com/reviewdog/action-alex)
 
 ### Dependencies Update Automation
 This repository uses [reviewdog/action-depup](https://github.com/reviewdog/action-depup) to update
