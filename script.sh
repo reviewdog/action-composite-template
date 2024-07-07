@@ -1,8 +1,14 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 if [ -n "${GITHUB_WORKSPACE}" ]; then
   cd "${GITHUB_WORKSPACE}/${INPUT_WORKDIR}" || exit
+fi
+
+mkdir -p "${INPUT_OUTPUT_DIR}"
+OUTPUT_FILE_NAME="reviewdog-${INPUT_TOOL_NAME}"
+if [[ "${INPUT_REPORTER}" == "sarif" ]]
+  OUTPUT_FILE_NAME="${OUTPUT_FILE_NAME}.sarif"
 fi
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
@@ -22,7 +28,9 @@ misspell -locale="${INPUT_LOCALE}" . |
     -filter-mode="${INPUT_FILTER_MODE}" \
     -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
     -level="${INPUT_LEVEL}" \
-    ${INPUT_REVIEWDOG_FLAGS}
-exit_code=$?
+    ${INPUT_REVIEWDOG_FLAGS} |
+    tee "${OUTPUT_FILE_NAME}"
+
+exit_code=${PIPESTATUS[1]}
 echo '::endgroup::'
 exit $exit_code
