@@ -7,7 +7,7 @@ fi
 
 mkdir -p "${INPUT_OUTPUT_DIR}"
 OUTPUT_FILE_NAME="reviewdog-${INPUT_TOOL_NAME}"
-if [[ "${INPUT_REPORTER}" == "sarif" ]]
+if [[ "${INPUT_REPORTER}" == "sarif" ]]; then
   OUTPUT_FILE_NAME="${OUTPUT_FILE_NAME}.sarif"
 fi
 
