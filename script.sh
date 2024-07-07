@@ -33,4 +33,4 @@ misspell -locale="${INPUT_LOCALE}" . |
 
 exit_code=${PIPESTATUS[1]}
 echo '::endgroup::'
-exit $exit_code
+exit "$exit_code"
