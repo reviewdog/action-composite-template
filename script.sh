@@ -29,7 +29,7 @@ misspell -locale="${INPUT_LOCALE}" . |
     -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
     -level="${INPUT_LEVEL}" \
     ${INPUT_REVIEWDOG_FLAGS} |
-  tee "${OUTPUT_FILE_NAME}"
+  tee "${INPUT_OUTPUT_DIR}/${OUTPUT_FILE_NAME}"
 
 exit_code=${PIPESTATUS[1]}
 echo '::endgroup::'
