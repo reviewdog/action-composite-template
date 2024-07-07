@@ -50,3 +50,13 @@ jobs:
       - name: check the exit code
         if: ${{ !success() }}
         run: echo 'The previous step should fail' && exit 1
+
+  test-sarif:
+    name: runner / <linter-name> (sarif)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
+        with:
+          reporter: sarif
+          locale: "US"
