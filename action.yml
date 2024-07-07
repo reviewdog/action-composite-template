@@ -62,7 +62,8 @@ runs:
         INPUT_LOCALE: ${{ inputs.locale }}
     - if: inputs.reporter == 'sarif'
       uses: github/codeql-action/upload-sarif@v3
-      sarif_file: ${{ inputs.output_dir }}
+      with:
+        sarif_file: ${{ inputs.output_dir }}
 
 # Ref: https://haya14busa.github.io/github-action-brandings/
 # TODO: update branding if you want.
