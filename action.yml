@@ -22,7 +22,7 @@ inputs:
   filter_mode:
     description: |
       Filtering mode for the reviewdog command [added,diff_context,file,nofilter].
-      Default is added except that sarif reporter uses nofilter.
+      Default is `added` except that sarif reporter uses `nofilter`.
     default: ''
   fail_on_error:
     description: |
