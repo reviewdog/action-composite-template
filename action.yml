@@ -17,13 +17,13 @@ inputs:
     description: 'Report level for reviewdog [info,warning,error].'
     default: 'error'
   reporter:
-    description: 'Reporter of reviewdog command [github-check,github-pr-review,github-pr-check].'
+    description: 'Reporter of reviewdog command [github-check,github-pr-review,github-pr-check,sarif].'
     default: 'github-check'
   filter_mode:
     description: |
       Filtering mode for the reviewdog command [added,diff_context,file,nofilter].
-      Default is added.
-    default: 'added'
+      Default is `added` except that sarif reporter uses `nofilter`.
+    default: ''
   fail_on_error:
     description: |
       Exit code for reviewdog when errors are found [true,false].
@@ -32,6 +32,9 @@ inputs:
   reviewdog_flags:
     description: 'Additional reviewdog flags.'
     default: ''
+  output_dir:
+    description: 'Output directory of reviewdog result. Useful for -reporter=sarif'
+    default: '../reviewdog-results'
   ### Flags for <linter-name> ###
   locale:
     description: '-locale flag of misspell. (US/UK)'
@@ -55,7 +58,12 @@ runs:
         INPUT_FILTER_MODE: ${{ inputs.filter_mode }}
         INPUT_FAIL_ON_ERROR: ${{ inputs.fail_on_error }}
         INPUT_REVIEWDOG_FLAGS: ${{ inputs.reviewdog_flags }}
+        INPUT_OUTPUT_DIR: ${{ inputs.output_dir }}
         INPUT_LOCALE: ${{ inputs.locale }}
+    - if: inputs.reporter == 'sarif'
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        sarif_file: ${{ inputs.output_dir }}
 
 # Ref: https://haya14busa.github.io/github-action-brandings/
 # TODO: update branding if you want.
