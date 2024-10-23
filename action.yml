@@ -1,72 +1,65 @@
-# TODO: replace `<linter-name>` and `<your-name>` with yours
-name: 'Run <linter-name> with reviewdog'
-description: '🐶 Run <linter-name> with reviewdog on pull requests to improve code review experience.'
-author: '<your-name>'
+name: "Run markuplint with reviewdog"
+description: "🐶 Run markuplint with reviewdog on pull requests to improve code review experience."
+author: "haya14busa (reviewdog)"
 inputs:
   github_token:
-    description: 'GITHUB_TOKEN'
-    default: '${{ github.token }}'
-  workdir:
-    description: 'Working directory relative to the root directory.'
-    default: '.'
-  ### Flags for reviewdog ###
-  tool_name:
-    description: 'Tool name to use for reviewdog reporter.'
-    default: '<linter-name>'
+    description: "GITHUB_TOKEN."
+    required: true
+    default: ${{ github.token }}
   level:
-    description: 'Report level for reviewdog [info,warning,error].'
-    default: 'error'
+    description: "Report level for reviewdog [info,warning,error]"
+    required: false
+    default: "error"
   reporter:
-    description: 'Reporter of reviewdog command [github-check,github-pr-review,github-pr-check,sarif].'
-    default: 'github-check'
+    description: |
+      Reporter of reviewdog command [github-check,github-pr-review].
+      Default is github-pr-review.
+      github-pr-review can use Markdown and add a link to rule page in reviewdog reports.
+    required: false
+    default: "github-pr-review"
   filter_mode:
     description: |
       Filtering mode for the reviewdog command [added,diff_context,file,nofilter].
-      Default is `added` except that sarif reporter uses `nofilter`.
-    default: ''
+      Default is added.
+    required: false
+    default: "added"
   fail_on_error:
     description: |
-      Exit code for reviewdog when errors are found [true,false].
+      Exit code for reviewdog when errors are found [true,false]
       Default is `false`.
-    default: 'false'
+    required: false
+    default: "false"
   reviewdog_flags:
-    description: 'Additional reviewdog flags.'
-    default: ''
-  output_dir:
-    description: 'Output directory of reviewdog result. Useful for -reporter=sarif'
-    default: '../reviewdog-results'
-  ### Flags for <linter-name> ###
-  locale:
-    description: '-locale flag of misspell. (US/UK)'
-    default: ''
+    description: "Additional reviewdog flags"
+    required: false
+    default: ""
+  markuplint_targets:
+    description: "File paths or glob patterns for linting by markuplint."
+    default: "**/*.html"
+  markuplint_flags:
+    description: "Flags and args of markuplint command. Default: '.'"
+    required: false
+    default: "."
+  workdir:
+    description: "The directory from which to look for and run markuplint. Default '.'"
+    required: false
+    default: "."
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
-    - uses: reviewdog/action-setup@v1
-      with:
-        reviewdog_version: v0.20.2
     - run: $GITHUB_ACTION_PATH/script.sh
       shell: bash
       env:
-        # INPUT_<VARIABLE_NAME> is not available in Composite run steps
-        # https://github.community/t/input-variable-name-is-not-available-in-composite-run-steps/127611
+        REVIEWDOG_VERSION: v0.20.2
         INPUT_GITHUB_TOKEN: ${{ inputs.github_token }}
-        INPUT_WORKDIR: ${{ inputs.workdir }}
-        INPUT_TOOL_NAME: ${{ inputs.tool_name }}
         INPUT_LEVEL: ${{ inputs.level }}
         INPUT_REPORTER: ${{ inputs.reporter }}
         INPUT_FILTER_MODE: ${{ inputs.filter_mode }}
         INPUT_FAIL_ON_ERROR: ${{ inputs.fail_on_error }}
         INPUT_REVIEWDOG_FLAGS: ${{ inputs.reviewdog_flags }}
-        INPUT_OUTPUT_DIR: ${{ inputs.output_dir }}
-        INPUT_LOCALE: ${{ inputs.locale }}
-    - if: inputs.reporter == 'sarif'
-      uses: github/codeql-action/upload-sarif@v3
-      with:
-        sarif_file: ${{ inputs.output_dir }}
-
-# Ref: https://haya14busa.github.io/github-action-brandings/
-# TODO: update branding if you want.
+        INPUT_MARKUPLINT_TARGETS: ${{ inputs.markuplint_targets }}
+        INPUT_MARKUPLINT_FLAGS: ${{ inputs.markuplint_flags }}
+        INPUT_WORKDIR: ${{ inputs.workdir }}
 branding:
-  icon: 'check'
-  color: 'blue'
+  icon: "check"
+  color: "blue"

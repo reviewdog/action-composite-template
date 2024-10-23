@@ -4,10 +4,10 @@ on:
     branches:
       - main
   pull_request:
-# TODO: replace `<linter-name>` with yours
+
 jobs:
   test-check:
-    name: runner / <linter-name> (github-check)
+    name: runner / markuplint (github-check)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,7 +20,7 @@ jobs:
 
   test-pr-check:
     if: github.event_name == 'pull_request'
-    name: runner / <linter-name> (github-pr-check)
+    name: runner / markuplint (github-pr-check)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,11 +30,11 @@ jobs:
           reporter: github-pr-check
           level: warning
           locale: "US"
-          workdir: ./testdata/subdir/
+          workdir: ./test-subproject/
 
   test-pr-review:
     if: github.event_name == 'pull_request'
-    name: runner / <linter-name> (github-pr-review)
+    name: runner / markuplint (github-pr-review)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -52,7 +52,7 @@ jobs:
         run: echo 'The previous step should fail' && exit 1
 
   test-sarif:
-    name: runner / <linter-name> (sarif)
+    name: runner / markuplint (sarif)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
