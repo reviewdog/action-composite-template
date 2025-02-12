@@ -43,18 +43,19 @@ inputs:
     description: 'Report level for reviewdog [info,warning,error].'
     default: 'error'
   reporter:
-    description: 'Reporter of reviewdog command [github-check,github-pr-review,github-pr-check].'
+    description: 'Reporter of reviewdog command [github-check,github-pr-review,github-pr-check,sarif].'
     default: 'github-check'
   filter_mode:
     description: |
       Filtering mode for the reviewdog command [added,diff_context,file,nofilter].
-      Default is added.
+      Default is `added` except that sarif reporter uses `nofilter`.
     default: 'added'
-  fail_on_error:
+  fail_level:
     description: |
-      Exit code for reviewdog when errors are found [true,false].
-      Default is `false`.
-    default: 'false'
+      If set to `none`, always use exit code 0 for reviewdog. Otherwise, exit code 1 for reviewdog if it finds at least 1 issue with severity greater than or equal to the given level.
+      Possible values: [none,any,info,warning,error]
+      Default is `none`.
+    default: 'none'
   reviewdog_flags:
     description: 'Additional reviewdog flags.'
     default: ''
