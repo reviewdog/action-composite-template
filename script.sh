@@ -26,7 +26,7 @@ misspell -locale="${INPUT_LOCALE}" . |
     -name="${INPUT_TOOL_NAME}" \
     -reporter="${INPUT_REPORTER}" \
     -filter-mode="${INPUT_FILTER_MODE}" \
-    -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
+    -fail-level="${INPUT_FAIL_LEVEL}" \
     -level="${INPUT_LEVEL}" \
     ${INPUT_REVIEWDOG_FLAGS} |
   tee "${INPUT_OUTPUT_DIR}/${OUTPUT_FILE_NAME}"
