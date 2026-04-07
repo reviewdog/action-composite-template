@@ -22,7 +22,7 @@ jobs:
       # Configure signed tags
       # https://www.chainguard.dev/unchained/keyless-git-commit-signing-with-gitsign-and-github-actions
       # https://github.com/chainguard-dev/actions/commits/main/setup-gitsign
-      - uses: chainguard-dev/actions/setup-gitsign@141bf225e9c19c34304ee9d06e9be9c44a6d8765 # main branch as of 2024-12-27
+      - uses: chainguard-dev/actions/setup-gitsign@a0a960b6ef0a72502b0a8eba85b7f3c00c669505 # main branch as of 2024-12-27
       - run: git config --global tag.gpgSign true
 
       # Bump version on merging Pull Requests with specific labels.
