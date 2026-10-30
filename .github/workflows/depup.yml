@@ -14,12 +14,12 @@ jobs:
       pull-requests: write
       contents: write
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@v7.0.1
       # Configure signed commits
       # https://www.chainguard.dev/unchained/keyless-git-commit-signing-with-gitsign-and-github-actions
       # https://github.com/chainguard-dev/actions/commits/main/setup-gitsign
-      - uses: chainguard-dev/actions/setup-gitsign@8f31e9482b447ff2c69eca944a09b4b31a4a85d0 # v1.7.2
-      - uses: reviewdog/action-depup/with-pr@99f7aecf3e4d06d5a3faf190dae5dc79ac530b5a # v1.6.5
+      - uses: chainguard-dev/actions/setup-gitsign@v1.7.2
+      - uses: reviewdog/action-depup/with-pr@v1.6.5
         with:
           file: action.yml
           version_name: reviewdog_version
