@@ -5,14 +5,14 @@ version: 'v0.0.3'
 workflows:
     '.github/workflows/depup.yml':
         - 'actions/checkout@v7.0.1'
-        - 'chainguard-dev/actions@v1.7.2'
+        - 'chainguard-dev/actions@v1.7.3'
         - 'reviewdog/action-depup@v1.6.5'
     '.github/workflows/labels.yml':
         - 'actions/checkout@v7.0.1'
         - 'lannonbr/issue-label-manager-action@5.0.0'
     '.github/workflows/release.yml':
         - 'actions/checkout@v7.0.1'
-        - 'chainguard-dev/actions@v1.7.2'
+        - 'chainguard-dev/actions@v1.7.3'
         - 'haya14busa/action-bumpr@v1.11.4'
         - 'haya14busa/action-cond@v1.2.1'
         - 'haya14busa/action-update-semver@v1.5.1'
@@ -34,9 +34,9 @@ dependencies:
         commit: 'sha1-3d3c42e5aac5ba805825da76410c181273ba90b1'
         owner_id: 44036562
         repo_id: 197814629
-    'chainguard-dev/actions@v1.7.2':
-        ref: 'v1.7.2'
-        commit: 'sha1-8f31e9482b447ff2c69eca944a09b4b31a4a85d0'
+    'chainguard-dev/actions@v1.7.3':
+        ref: 'v1.7.3'
+        commit: 'sha1-f133c9e8aae4b7e9031c254d34cacb2fa8f83c31'
         owner_id: 87436699
         repo_id: 461955941
     'github/codeql-action@v4.39.1':
