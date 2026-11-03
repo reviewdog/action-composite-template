@@ -18,7 +18,7 @@ jobs:
       # Configure signed commits
       # https://www.chainguard.dev/unchained/keyless-git-commit-signing-with-gitsign-and-github-actions
       # https://github.com/chainguard-dev/actions/commits/main/setup-gitsign
-      - uses: chainguard-dev/actions/setup-gitsign@v1.7.3
+      - uses: chainguard-dev/actions/setup-gitsign@v1.8.0
       - uses: reviewdog/action-depup/with-pr@v1.6.5
         with:
           file: action.yml
